@@ -1,0 +1,10 @@
+# 구글 인증 정보 - 절대 올리지 않음
+.streamlit/secrets.toml
+
+# 기타
+__pycache__/
+*.pyc
+*.pyo
+.env
+*.txt
+*.bat
