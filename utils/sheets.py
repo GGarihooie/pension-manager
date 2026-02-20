@@ -25,7 +25,7 @@ def get_client():
         st.secrets["gcp_service_account"],
         scopes=scopes
     )
-    return gspread.authorize(creds)
+    return gspread.Client(auth=creds)
 
 
 def get_sheet():
@@ -86,7 +86,7 @@ def update_row(sheet_row_index, row_data):
     No 컬럼(A열)은 건드리지 않고 B열부터 업데이트"""
     sheet = get_sheet()
     col_end = chr(ord('B') + len(row_data) - 1)
-    sheet.update(f'B{sheet_row_index}:{col_end}{sheet_row_index}', [row_data])
+    sheet.update([row_data], f'B{sheet_row_index}:{col_end}{sheet_row_index}')
 
 
 def delete_row(sheet_row_index):
